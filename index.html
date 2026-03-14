@@ -1,56 +1,218 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiplayer Battleship Web Game - Jack Stivers and Shaun Whitt</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        :root {
+            --bg: #f5f7fb;
+            --surface: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --accent: #111827;
+            --accent-hover: #374151;
+            --shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: Arial;
-            max-width: 800px;
-            margin: auto;
-            padding: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 40px 20px;
         }
-        h1 { font-size: 40px; }
-        .project {
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #ccc;
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
-        a.button {
+
+        .hero {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 56px 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+        }
+
+        .eyebrow {
             display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            background: black;
-            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 14px;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+
+        .intro {
+            font-size: 1.08rem;
+            color: var(--muted);
+            max-width: 680px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin: 12px 0 18px;
+            color: var(--accent);
+        }
+
+        .project,
+        .about-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+
+        .project h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .project p,
+        .about-card p {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        a.button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 12px;
             text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        a.button.primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        a.button.primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        a.button.secondary {
+            background: white;
+            color: var(--accent);
+            border-color: var(--border);
+        }
+
+        a.button.secondary:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+            transform: translateY(-1px);
+        }
+
+        .project-meta {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 6px 10px;
+            border-radius: 999px;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 36px 24px;
+            }
+
+            .project,
+            .about-card {
+                padding: 22px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            a.button {
+                width: 100%;
+            }
         }
     </style>
 </head>
-
 <body>
+    <div class="container">
+        <section class="hero">
+            <div class="eyebrow">Portfolio</div>
+            <h1>Jack Stivers and Shaun Whitt</h1>
+            <p class="subtitle">Computer Science Students</p>
+            <p class="intro">
+                We build full-stack web applications and multiplayer systems, with a focus on
+                practical software that users can interact with directly.
+            </p>
+        </section>
 
-<h1>Jack Stivers and Shaun Whitt</h1>
+        <h2 class="section-title">Featured Project</h2>
 
-<p><strong>Computer Science Students</strong></p>
+        <section class="project">
+            <span class="project-meta">Team Project</span>
+            <h3>Multiplayer Battleship Game</h3>
+            <p>
+                A turn-based multiplayer web game supporting multiple simultaneous matches,
+                designed to demonstrate real-time interaction, backend state management,
+                and full-stack development.
+            </p>
 
-<p>We build full-stack web applications and multiplayer systems.</p>
+            <div class="button-group">
+                <a class="button primary" href="#">Play Live App</a>
+                <a class="button secondary" href="#">View Code</a>
+            </div>
+        </section>
 
-<h2>Featured Project</h2>
+        <h2 class="section-title">About</h2>
 
-<div class="project">
-    <h3>Multiplayer Battleship Game</h3>
-    <p>A turn-based multiplayer web game supporting multiple simultaneous matches.</p>
-
-    <a class="button" href="#">Play Live App</a>
-    <a class="button" href="#">View Code</a>
-</div>
-
-<h2>About</h2>
-
-<p>
-We're computer science students interested in backend systems,
-web development, and multiplayer applications.
-</p>
-
+        <section class="about-card">
+            <p>
+                We’re computer science students interested in backend systems, web development,
+                and multiplayer applications. This project highlights our ability to build
+                software that is functional, deployable, and easy to explore.
+            </p>
+        </section>
+    </div>
 </body>
 </html>
