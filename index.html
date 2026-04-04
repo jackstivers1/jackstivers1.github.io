@@ -71,30 +71,42 @@ h1{
 }
 
 .project p{
-    margin:0;
+    margin:0 0 6px 0;
     font-size:14px;
     color:#555;
+    line-height:1.45;
 }
 
 /* BUTTONS */
 
 .button-group{
-    margin-top:8px;
+    margin-top:10px;
 }
 
 a.button{
     display:inline-block;
-    padding:7px 13px;
-    margin-right:6px;
+    padding:9px 15px;
+    margin-right:8px;
     background:#2563eb;
     color:white;
     text-decoration:none;
     border-radius:6px;
-    font-size:13px;
+    font-size:14px;
+    font-weight:bold;
 }
 
 a.button:hover{
     background:#1d4ed8;
+}
+
+a.button.secondary{
+    background:#ffffff;
+    color:#2563eb;
+    border:1px solid #2563eb;
+}
+
+a.button.secondary:hover{
+    background:#eff6ff;
 }
 
 /* ABOUT CARD */
@@ -106,6 +118,7 @@ a.button:hover{
     padding:14px;
     font-size:14px;
     color:#555;
+    line-height:1.45;
 }
 
 </style>
@@ -131,18 +144,20 @@ I build full-stack web applications and multiplayer systems.
 <p>
 A turn-based multiplayer web game supporting multiple simultaneous matches.
 </p>
+<p>
+This project highlights backend game-state management, player sessions, and live gameplay through a browser.
+</p>
 
 <div class="button-group">
-<a class="button" href="#">Play Live App</a>
-<a class="button" href="#">View Code</a>
+<a class="button" href="https://final-project-m5u7.onrender.com/" target="_blank">Launch Live App</a>
+<a class="button secondary" href="#" target="_blank">View GitHub Code</a>
 </div>
 </div>
 
 <h2 class="section-title">About</h2>
 
 <div class="about">
-I'm a computer science students interested in backend systems,
-web development, and multiplayer applications.
+I'm a computer science student interested in backend systems, web development, and multiplayer applications.
 </div>
 
 </div>
