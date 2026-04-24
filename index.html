@@ -18,7 +18,11 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #f4f7fb;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(59,130,246,0.25), transparent 35%),
+        radial-gradient(circle at 80% 20%, rgba(168,85,247,0.18), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(16,185,129,0.18), transparent 40%),
+        #f4f7fb;
       color: #172033;
       line-height: 1.6;
     }
@@ -57,7 +61,9 @@
     }
 
     .brand span {
-      color: #2563eb;
+      background: linear-gradient(135deg, #2563eb, #7c3aed, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .nav-links {
@@ -108,7 +114,9 @@
     }
 
     h1 span {
-      color: #2563eb;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
@@ -142,9 +150,9 @@
     }
 
     .btn.primary {
-      background: #2563eb;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
       color: white;
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 12px 30px rgba(124,58,237,0.3);
     }
 
     .btn.secondary {
@@ -215,7 +223,7 @@
     }
 
     .project {
-      background: white;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
       border: 1px solid #dbe3ef;
       border-radius: 24px;
       padding: 28px;
@@ -242,12 +250,14 @@
     .tag {
       font-size: 0.78rem;
       font-weight: 800;
-      color: #1d4ed8;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
       padding: 6px 10px;
       border-radius: 999px;
+      color: white;
     }
+    
+    .tag:nth-child(1) { background: #2563eb; }
+    .tag:nth-child(2) { background: #7c3aed; }
+    .tag:nth-child(3) { background: #14b8a6; }
 
     .project h3 {
       font-size: 1.75rem;
@@ -301,7 +311,7 @@
     }
 
     .panel {
-      background: white;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
       border: 1px solid #dbe3ef;
       border-radius: 24px;
       padding: 28px;
