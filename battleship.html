@@ -1,96 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Battleship | Jack Stivers</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Multiplayer Battleship | Jack Stivers</title>
 
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#eef2ff,#f8fafc);
+* {
+  box-sizing: border-box;
   margin: 0;
-  color: #1e293b;
+  padding: 0;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(124, 58, 237, 0.20), transparent 34%),
+    radial-gradient(circle at 85% 20%, rgba(37, 99, 235, 0.20), transparent 36%),
+    radial-gradient(circle at 50% 95%, rgba(20, 184, 166, 0.18), transparent 38%),
+    #f4f7fb;
+  color: #172033;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+.topbar {
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid #dbe3ef;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .container {
-  max-width: 900px;
+  width: min(1050px, calc(100% - 36px));
   margin: auto;
-  padding: 40px 20px;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.nav {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.tag {
-  display: inline-block;
-  background: #7c3aed;
-  color: white;
-  padding: 6px 10px;
+.brand {
+  font-size: 2.3rem;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: #10213f;
+}
+
+.brand span {
+  background: linear-gradient(135deg, #2563eb, #7c3aed, #14b8a6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 800;
+  color: #475569;
+  padding: 10px 14px;
   border-radius: 999px;
-  font-size: 0.8rem;
-  margin-bottom: 20px;
 }
 
-.card {
-  background: white;
-  padding: 28px;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+.nav-links a:hover {
+  background: #e8f0ff;
+  color: #1d4ed8;
 }
 
-.btn {
+.hero {
+  padding: 72px 0 38px;
+}
+
+.back {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-weight: bold;
+  margin-bottom: 26px;
+  color: #475569;
+  font-weight: 800;
   text-decoration: none;
 }
 
-.primary {
-  background: linear-gradient(135deg,#2563eb,#7c3aed);
+.back:hover {
+  color: #2563eb;
+}
+
+.badge {
+  display: inline-block;
   color: white;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.08em;
+  color: #0f172a;
+  max-width: 850px;
+}
+
+.hero-text {
+  margin-top: 24px;
+  max-width: 780px;
+  font-size: 1.12rem;
+  color: #475569;
+}
+
+.actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 48px;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 900;
+  border-radius: 13px;
+  transition: 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.primary {
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  color: white;
+  box-shadow: 0 16px 34px rgba(37,99,235,0.28);
 }
 
 .secondary {
+  background: white;
   border: 1px solid #cbd5e1;
   color: #1e293b;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  padding: 28px 0 70px;
+}
+
+.card {
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border: 1px solid #dbe3ef;
+  border-radius: 26px;
+  padding: 30px;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+}
+
+.card h2 {
+  font-size: 1.55rem;
+  letter-spacing: -0.05em;
+  margin-bottom: 14px;
+  color: #0f172a;
+}
+
+.card p {
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.card ul {
+  margin-left: 20px;
+  color: #475569;
+}
+
+.card li {
+  margin-bottom: 9px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tag {
+  color: white;
+  font-weight: 900;
+  font-size: 0.82rem;
+  padding: 7px 11px;
+  border-radius: 999px;
+}
+
+.tag:nth-child(1) { background: #7c3aed; }
+.tag:nth-child(2) { background: #2563eb; }
+.tag:nth-child(3) { background: #14b8a6; }
+.tag:nth-child(4) { background: #f97316; }
+
+.stat {
+  padding: 18px 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.stat:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.35rem;
+  color: #0f172a;
+}
+
+.stat span {
+  color: #64748b;
+}
+
+footer {
+  text-align: center;
+  color: #64748b;
+  padding: 0 0 46px;
+}
+
+@media (max-width: 830px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+    gap: 12px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .card {
+    padding: 23px;
+    border-radius: 20px;
+  }
 }
 </style>
 </head>
 
 <body>
-<div class="container">
-  <a href="index.html">← Back to Portfolio</a>
+<header class="topbar">
+  <div class="container nav">
+    <div class="brand">Jack <span>Stivers</span></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="bookmanager.html">Solo Project</a>
+    </nav>
+  </div>
+</header>
 
-  <h1>Multiplayer Battleship</h1>
-  <div class="tag">Team Project</div>
-
-  <div class="card">
-    <p>
-      A multiplayer browser-based Battleship game supporting multiple players, turn-based gameplay, and live interaction.
+<main>
+  <section class="container hero">
+    <a class="back" href="index.html">← Back to Portfolio</a>
+    <div class="badge">Team Project · Multiplayer Web Game</div>
+    <h1>Multiplayer Battleship</h1>
+    <p class="hero-text">
+      A deployed browser-based multiplayer Battleship game with player registration, game creation, joining, and turn-based gameplay.
     </p>
 
-    <h3>My Contributions</h3>
-    <ul>
-      <li>Frontend flow and UI improvements</li>
-      <li>Game state clarity and usability</li>
-      <li>Connecting frontend to backend API</li>
-    </ul>
+    <div class="actions">
+      <a class="btn primary" href="https://final-project-m5u7.onrender.com" target="_blank" rel="noopener noreferrer">Open Live App</a>
+      <a class="btn secondary" href="https://github.com/ShaunWhittTea/Final-Project" target="_blank" rel="noopener noreferrer">View GitHub</a>
+    </div>
+  </section>
 
-    <h3>Features</h3>
-    <ul>
-      <li>Create and join games</li>
-      <li>Turn-based gameplay</li>
-      <li>Multi-player support</li>
-    </ul>
+  <section class="container grid">
+    <div class="card">
+      <h2>Project Overview</h2>
+      <p>
+        Multiplayer Battleship is a team-built web game designed around creating matches, joining games, viewing game state, and playing through a turn-based interface.
+      </p>
 
-    <a class="btn primary" href="https://final-project-m5u7.onrender.com" target="_blank">Open Live App</a>
-    <a class="btn secondary" href="https://github.com/ShaunWhittTea/Final-Project" target="_blank">View GitHub</a>
-  </div>
-</div>
+      <h2>My Contributions</h2>
+      <ul>
+        <li>Improved the frontend flow so players can move through the app more clearly.</li>
+        <li>Helped connect frontend screens to backend API endpoints.</li>
+        <li>Focused on making game state, turns, and player status easier to understand.</li>
+        <li>Worked on making the deployed app usable as a real web product.</li>
+      </ul>
+
+      <h2 style="margin-top: 24px;">Technical Focus</h2>
+      <div class="tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">Flask API</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Render</span>
+      </div>
+    </div>
+
+    <aside class="card">
+      <div class="stat">
+        <strong>Team-built</strong>
+        <span>Created as a collaborative multiplayer web app.</span>
+      </div>
+      <div class="stat">
+        <strong>API-driven</strong>
+        <span>Frontend connects to backend routes for game actions.</span>
+      </div>
+      <div class="stat">
+        <strong>Live deployment</strong>
+        <span>Hosted on Render for easy testing and review.</span>
+      </div>
+    </aside>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© 2026 Jack Stivers · Multiplayer Battleship Project Page</div>
+</footer>
 </body>
 </html>
