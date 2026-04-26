@@ -216,6 +216,70 @@
       max-width: 650px;
     }
 
+    .featured-project {
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(124, 58, 237, 0.95)),
+        #2563eb;
+      color: white;
+      border-radius: 28px;
+      padding: 34px;
+      margin-bottom: 28px;
+      box-shadow: 0 28px 70px rgba(37, 99, 235, 0.25);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-project::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -80px;
+      top: -80px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .featured-label {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+    }
+
+    .featured-project h3 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .featured-project p {
+      color: rgba(255,255,255,0.88);
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .featured-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 1;
+    }
+
     .projects {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -296,12 +360,31 @@
       border: 1px solid #cbd5e1;
       background: #f8fafc;
       color: #1e293b;
+      transition: transform 0.18s ease, filter 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .small-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(0.88);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.14);
     }
 
     .small-btn.live {
       background: #2563eb;
       color: white;
       border-color: #2563eb;
+    }
+
+    .small-btn.featured-light {
+      background: white;
+      color: #1d4ed8;
+      border-color: white;
+    }
+
+    .small-btn.featured-dark {
+      background: rgba(15, 23, 42, 0.22);
+      color: white;
+      border-color: rgba(255,255,255,0.32);
     }
 
     .about-grid {
@@ -368,9 +451,14 @@
         padding-top: 52px;
       }
 
+      .featured-project,
       .projects,
       .about-grid {
         grid-template-columns: 1fr;
+      }
+
+      .featured-links {
+        justify-content: flex-start;
       }
     }
 
@@ -448,8 +536,27 @@
 
     <section id="projects" class="container">
       <div class="section-title">
-        <h2>Featured Projects</h2>
-        <p>Each project includes direct links so the work can be opened, reviewed, and tested quickly.</p>
+        <h2>Featured Project</h2>
+        <p>The team Battleship project is highlighted first because it best shows multiplayer design, API integration, and deployed product polish.</p>
+      </div>
+
+      <article class="featured-project">
+        <div>
+          <div class="featured-label">Featured Project · Team Build</div>
+          <h3>Multiplayer Battleship</h3>
+          <p>
+            Multiplayer Battleship is a browser-based game that lets players register, create games, join matches, and play through a turn-based interface. The project connects a polished frontend to backend API routes so player actions, game state, turns, and results can update through the deployed app. I am featuring this project because it demonstrates teamwork, full-stack development, and a more complex user flow than a simple static website.
+          </p>
+        </div>
+        <div class="featured-links">
+          <a class="small-btn featured-light" href="battleship.html">View Description</a>
+          <a class="small-btn featured-dark" href="https://final-project-m5u7.onrender.com" target="_blank" rel="noopener noreferrer">Open Live App</a>
+        </div>
+      </article>
+
+      <div class="section-title">
+        <h2>Project Descriptions</h2>
+        <p>Both project cards include direct links for the live app, GitHub repository, and detailed project page.</p>
       </div>
 
       <div class="projects">
@@ -463,17 +570,8 @@
 
             <h3>Book Manager</h3>
             <p>
-              A solo full-stack web application for browsing and managing a collection of books through a clean deployed interface.
+              Book Manager is a solo full-stack web application for browsing and managing a collection of books through a clean deployed interface. The project uses database-backed book data so the app is more than a static page. It also demonstrates independent project ownership through deployment, custom domain setup, and a simple user flow that is easy to test.
             </p>
-            <p>
-              This project demonstrates independent product ownership: database setup, table design, deployment, and a user-facing app hosted on a custom domain.
-            </p>
-
-            <ul>
-              <li>Custom domain connected through DNS</li>
-              <li>PostgreSQL-backed book data</li>
-              <li>Built to be simple to open, scan, and demo</li>
-            </ul>
           </div>
 
           <div class="project-links">
@@ -493,17 +591,8 @@
 
             <h3>Multiplayer Battleship</h3>
             <p>
-              A browser-based multiplayer Battleship game that supports player registration, game creation, joining matches, and turn-based gameplay.
+              Multiplayer Battleship is a team-built web game that supports player registration, game creation, joining matches, and turn-based gameplay. My work focused on improving the frontend flow, clarifying game state, and connecting the interface to backend API endpoints. The project shows practical full-stack development because the app has multiple screens, player actions, live deployment, and persistent game logic.
             </p>
-            <p>
-              My work focused on making the app usable as a deployed product by improving the frontend flow, clarifying game state, and connecting the interface to the backend API.
-            </p>
-
-            <ul>
-              <li>Multi-player game flow and live deployment</li>
-              <li>Frontend screens for creating, joining, and playing games</li>
-              <li>Backend API integration for game state and player actions</li>
-            </ul>
           </div>
 
           <div class="project-links">
