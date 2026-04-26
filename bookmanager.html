@@ -137,11 +137,13 @@ h1 {
   text-decoration: none;
   font-weight: 900;
   border-radius: 13px;
-  transition: 0.18s ease;
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
 }
 
 .btn:hover {
   transform: translateY(-2px);
+  filter: brightness(0.88);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
 }
 
 .primary {
@@ -286,7 +288,6 @@ footer {
 <main>
   <section class="container hero">
     <a class="back" href="index.html">← Back to Portfolio</a>
-    <div class="badge">Solo Project · Full-Stack Web App</div>
     <h1>Book Manager</h1>
     <p class="hero-text">
       A deployed full-stack application for browsing and managing book data through a clean, database-backed interface.
